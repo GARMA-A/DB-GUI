@@ -1,122 +1,89 @@
-const mysql = require('mysql');
+const sql = require('mssql/msnodesqlv8');
 const dotenv = require('dotenv');
 let instance = null;
 dotenv.config();
 
-const connection = mysql.createConnection({
-    host: process.env.HOST,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE,
-    port: process.env.DB_PORT
-});
 
-connection.connect((err) => {
-    if (err) {
-        console.log(err.message);
+const config = {
+
+    database: 'GirgsEmad',
+    server: 'DESKTOP-N5UH31J\\NIGHTMARESQL',
+    driver: 'msnodesqlv8',
+    options: {
+      trustedConnection: true
     }
-    // console.log('db ' + connection.state);
-});
+  };
+  
 
+  const pool = new sql.ConnectionPool(config);
+  const poolConnect = pool.connect();
+  
+  poolConnect.then(() => {
+    console.log('connected successfully');
+    // return pool.request().query('SELECT * FROM names');
+  })
+  
 
-class DbService {
-    static getDbServiceInstance() {
-        return instance ? instance : new DbService();
-    }
-
-    async getAllData() {
+   const getAllData = async () => {
         try {
-            const response = await new Promise((resolve, reject) => {
-                const query = "SELECT * FROM names;";
-
-                connection.query(query, (err, results) => {
-                    if (err) reject(new Error(err.message));
-                    resolve(results);
-                })
-            });
-            // console.log(response);
-            return response;
-        } catch (error) {
+            const result = await pool.request().query('SELECT * FROM names');
+            return result;
+            }
+        catch (error) {
             console.log(error);
         }
     }
 
 
-    async insertNewName(name) {
+    const insertNewName = async(name)=> {
         try {
             const dateAdded = new Date();
-            const insertId = await new Promise((resolve, reject) => {
-                const query = "INSERT INTO names (name, date_added) VALUES (?,?);";
-
-                connection.query(query, [name, dateAdded] , (err, result) => {
-                    if (err) reject(new Error(err.message));
-                    resolve(result.insertId);
-                })
-            });
-            return {
-                id : insertId,
-                name : name,
-                dateAdded : dateAdded
-            };
+            const result = await pool.request()
+            .input('id', sql.Int, 10)
+            .input('name', sql.NVarChar, name)
+            .input('dateAdded', sql.DateTime, dateAdded)
+            .query('INSERT INTO names (id, n_name, date_added) VALUES (@id, @name, @dateAdded)');
+             
         } catch (error) {
             console.log(error);
         }
     }
 
-    async deleteRowById(id) {
+    const deleteRowById = async (id) =>{
         try {
-            id = parseInt(id, 10); 
-            const response = await new Promise((resolve, reject) => {
-                const query = "DELETE FROM names WHERE id = ?";
-    
-                connection.query(query, [id] , (err, result) => {
-                    if (err) reject(new Error(err.message));
-                    resolve(result.affectedRows);
-                })
-            });
-    
-            return response === 1 ? true : false;
+            const result = await pool.request().query(`DELETE FROM names WHERE id = ${id}`);
         } catch (error) {
             console.log(error);
             return false;
         }
     }
 
-    async updateNameById(id, name) {
+    const updateNameById = async(id, name) =>{       
         try {
-            id = parseInt(id, 10); 
-            const response = await new Promise((resolve, reject) => {
-                const query = "UPDATE names SET name = ? WHERE id = ?";
-    
-                connection.query(query, [name, id] , (err, result) => {
-                    if (err) reject(new Error(err.message));
-                    resolve(result.affectedRows);
-                })
-            });
-    
-            return response === 1 ? true : false;
+            const result = await pool.request().query(`UPDATE names SET n_name = '${name}' WHERE id = ${id};`);
+         
         } catch (error) {
             console.log(error);
             return false;
         }
     }
 
-    async searchByName(name) {
+    const searchByName = async(name) => {
         try {
-            const response = await new Promise((resolve, reject) => {
-                const query = "SELECT * FROM names WHERE name = ?;";
 
-                connection.query(query, [name], (err, results) => {
-                    if (err) reject(new Error(err.message));
-                    resolve(results);
-                })
-            });
-
-            return response;
+            const result = await pool.request().query(`SELECT * FROM names WHERE n_name = '${name}';`);
+            return result;
         } catch (error) {
             console.log(error);
         }
     }
+
+
+    module.exports ={
+    getAllData,
+    insertNewName,
+    deleteRowById,
+    updateNameById,
+    searchByName
+
 }
-
-module.exports = DbService;

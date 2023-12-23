@@ -1,12 +1,66 @@
-const { response } = require("express");
 
-document.addEventListener('DOMContentLoaded',()=>
+document.addEventListener('DOMContentLoaded',async()=>
 {
-       fetch('http://localhost:5000/getAll')
-              .then(response => response.json())
-              .then(data => console.log(data));
+       console.log("loaded")
+
+
+       await fetch('http://127.0.0.1:5000/getAll').then(data=>
+       data.json().then(data=>console.log(data.data.recordset)));
        loodHtmlTable([]);
           
+
+       // await fetch('http://127.0.0.1:5000/insert',{
+       //        headers: {
+       //               "Content-Type": "application/json",
+       //               // 'Content-Type': 'application/x-www-form-urlencoded',
+       //             },
+       //        method:'POST',
+       //        body:JSON.stringify({"name":"Yaser"}),
+
+       
+       // })
+
+       await fetch('http://127.0.0.1:5000/search',{
+              headers: {
+                     "Content-Type": "application/json",
+                     // 'Content-Type': 'application/x-www-form-urlencoded',
+                   },
+              method:'POST',
+              body:JSON.stringify({"name":"girges"}),
+
+       
+       }).then(data=>
+              data.json().then(data=>console.log(data.data.recordset)));
+
+
+
+       // await fetch('http://127.0.0.1:5000/delete',{
+       //        headers: {
+       //               "Content-Type": "application/json",
+       //               // 'Content-Type': 'application/x-www-form-urlencoded',
+       //               },
+       //        method:'POST',
+       //        body:JSON.stringify({"id":10}),
+
+       
+       // })
+
+
+             await fetch('http://127.0.0.1:5000/update',{
+              headers: {
+                     "Content-Type": "application/json",
+                     // 'Content-Type': 'application/x-www-form-urlencoded',
+                     },
+              method:'POST',
+              body:JSON.stringify({
+                     "id":1,
+                     "name":"Ahmed"
+              }),
+
+       
+       })
+
+
 });
        
 function loodHtmlTable(data)

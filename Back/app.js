@@ -4,7 +4,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 dotenv.config();
 
-const dbService = require('./dbService');
+const db = require('./dbService');
 
 app.use(cors());
 app.use(express.json());
@@ -12,61 +12,46 @@ app.use(express.urlencoded({ extended : false }));
 
 
 // create
-app.post('/insert', (request, response) => {
+app.post('/insert', async(request, response) => {
     const { name } = request.body;
-    const db = dbService.getDbServiceInstance();
-    
-    const result = db.insertNewName(name);
 
-    result
-    .then(data => response.json({ data: data}))
-    .catch(err => console.log(err));
+    const result = await db.insertNewName(name);
+
+    return response.status(200).json({data : result});
 });
 
 // read
-app.get('/getAll', (request, response) => {
-    const db = dbService.getDbServiceInstance();
+app.get('/getAll', async(request, response) => {
 
-    const result = db.getAllData();
+    const result = await db.getAllData();
     
-    result
-    .then(data => response.json({data : data}))
-    .catch(err => console.log(err));
+    return response.status(200).json({data : result});
 })
 
 // update
-app.patch('/update', (request, response) => {
+app.post('/update', async(request, response) => {
     const { id, name } = request.body;
-    const db = dbService.getDbServiceInstance();
 
-    const result = db.updateNameById(id, name);
+    const result = await db.updateNameById(id, name);
     
-    result
-    .then(data => response.json({success : data}))
-    .catch(err => console.log(err));
+    return response.status(200).json({data : result});
+
 });
 
 // delete
-app.delete('/delete/:id', (request, response) => {
-    const { id } = request.params;
-    const db = dbService.getDbServiceInstance();
+app.post('/delete', async(request, response) => {
+    const { id } = request.body;
 
-    const result = db.deleteRowById(id);
-    
-    result
-    .then(data => response.json({success : data}))
-    .catch(err => console.log(err));
+    const result = await db.deleteRowById(id);
+    return response.status(200).json({data : result});
 });
 
-app.get('/search/:name', (request, response) => {
-    const { name } = request.params;
-    const db = dbService.getDbServiceInstance();
+app.post('/search', async(request, response) => {
+    const { name } = request.body;
+    const result = await db.searchByName(name);
+    return response.status(200).json({data : result});
 
-    const result = db.searchByName(name);
-    
-    result
-    .then(data => response.json({data : data}))
-    .catch(err => console.log(err));
+
 })
 
-app.listen(process.env.PORT, () => console.log('app is running'));
+app.listen(5000, () => console.log('app is running on port' + 5000));
