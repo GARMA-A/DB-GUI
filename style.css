@@ -1,85 +1,82 @@
-*
-{
+* {
        margin: 0;
        padding: 0;
        box-sizing: inherit;
-        overflow: hidden; 
-       
-     
+
+
 }
-html
-{
+
+html {
        box-sizing: border-box;
-       font-size: 62.5%;  
-      
-}
-.welcome
-{
-     width: 50rem;
-     height: 50rem;
-
+       font-size: 62.5%;
+       overflow: hidden;
 }
 
+.welcome {
+       width: 50rem;
+       height: 50rem;
 
-.all
-{
-background-image: linear-gradient(to left bottom, rgba(0, 126, 229, 0.175), rgb(2, 17, 34), rgb(2, 17, 34), rgb(2, 17, 34), rgb(2, 17, 34), rgb(2, 17, 34),
+}
+
+
+.all {
+       background-image: linear-gradient(to left bottom, rgba(0, 126, 229, 0.175), rgb(2, 17, 34), rgb(2, 17, 34), rgb(2, 17, 34), rgb(2, 17, 34), rgb(2, 17, 34),
                      rgb(6, 20, 36),
                      rgb(8, 22, 38),
                      rgba(0, 127, 230, 0.154));
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-template-rows: 1fr 1fr 1fr;
-              width: 100vw;
-              height: 100vh;
-              justify-content: center;
-              align-items: center;
+       display: grid;
+       grid-template-columns: 1fr 1fr 1fr;
+       grid-template-rows: 1fr 1fr 1fr;
+       width: 100vw;
+       height: 100vh;
+       justify-content: center;
+       align-items: center;
 }
-.box
-{
+
+.box {
        justify-self: center;
-       grid-column:2/3 ;
-       grid-row:2/3 ;
+       grid-column: 2/3;
+       grid-row: 2/3;
        display: grid;
        justify-content: center;
        align-items: center;
-       grid-template-rows: repeat(4,1fr);
+       grid-template-rows: repeat(3,(1fr,25rem));
        grid-template-columns: repeat(4, 1fr);
        justify-content: center;
        background-image: linear-gradient(to right bottom, rgba(0, 48, 88, 0.264), rgb(2, 9, 24),
-              rgb(2, 9, 24),
                      rgb(2, 9, 24),
-                            rgba(0, 50, 90, 0.254));
+                     rgb(2, 9, 24),
+                     rgba(0, 50, 90, 0.254));
        width: 30rem;
        height: 50rem;
        border-radius: 20px;
        z-index: 10;
        transition: all 0.2s;
 }
-.box:hover
-{
+
+.box:hover {
        transform: scale(1.02);
 }
-.box h2
-{
+
+.box h2 {
 
        grid-column: 1/end;
        grid-row: 1/2;
        text-align: center;
        background-image: linear-gradient(to right bottom, rgba(27, 105, 157, 0.754), rgb(100, 97, 165),
-                            rgb(112, 93, 161),
-                            rgb(40, 80, 145));
+                     rgb(112, 93, 161),
+                     rgb(40, 80, 145));
        font-size: 2.5rem;
        padding: 1rem;
        border-radius: 0.5rem;
-       font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-       
+       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
        margin: 1.5rem;
 }
-.DeleteBtn
-{
+
+.DeleteBtn {
        background-image: linear-gradient(to right bottom, rgba(48, 34, 92, 0.754), rgb(30, 71, 118),
-              rgb(39, 81, 131),
+                     rgb(39, 81, 131),
                      rgb(38, 22, 94));
        margin-bottom: 10%;
        width: 15rem;
@@ -88,16 +85,16 @@ background-image: linear-gradient(to left bottom, rgba(0, 126, 229, 0.175), rgb(
        outline: none;
        border: none;
        font-size: 1.5rem;
-              font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
        font-weight: 700;
        cursor: pointer;
        transition: all, 0.2s;
-           grid-column: 2/4;
-              grid-row: 4/5;
-      
+       grid-column: 2/4;
+       grid-row: 4/5;
+
 }
-.EditBtn
- {
+
+.EditBtn {
        background-image: linear-gradient(to right bottom, rgba(48, 34, 92, 0.754), rgb(30, 71, 118),
                      rgb(39, 81, 131),
                      rgb(38, 22, 94));
@@ -116,6 +113,7 @@ background-image: linear-gradient(to left bottom, rgba(0, 126, 229, 0.175), rgb(
        grid-row: 3/4;
 
 }
+
 .ShowBtn {
        background-image: linear-gradient(to right bottom, rgba(48, 34, 92, 0.754), rgb(30, 71, 118),
                      rgb(39, 81, 131),
@@ -135,41 +133,250 @@ background-image: linear-gradient(to left bottom, rgba(0, 126, 229, 0.175), rgb(
        grid-row: 2/3;
 
 }
-.DeleteBtn:hover
-{
+
+.DeleteBtn:hover {
        transform: scale(0.98);
        background-image: linear-gradient(to right bottom, rgba(220, 122, 122, 0.754), rgb(196, 71, 71),
                      rgba(187, 55, 55, 0.785),
                      rgba(224, 130, 130, 0.893));
-       
+
 }
+
 .EditBtn:hover {
        transform: scale(0.98);
        background-image: linear-gradient(to right bottom, rgba(28, 99, 76, 0.754), rgb(47, 160, 100),
                      rgb(39, 147, 79),
-              rgba(28, 99, 76, 0.754));
+                     rgba(28, 99, 76, 0.754));
 
 }
+
 .ShowBtn:hover {
        transform: scale(0.98);
        background-image: linear-gradient(to right bottom, rgba(28, 99, 76, 0.754), rgb(47, 160, 100),
-                            rgb(39, 147, 79),
-                            rgba(28, 99, 76, 0.754));
+                     rgb(39, 147, 79),
+                     rgba(28, 99, 76, 0.754));
 
 }
+
 .DeleteBtn:active {
        transform: scale(0.95);
-      
+
 
 }
+
 .EditBtn:active {
        transform: scale(0.95);
 
 
 }
+
 .ShowBtn:active {
        transform: scale(0.95);
 
+
+}
+
+
+
+
+.showBox .txt {
+
+       width: 25rem;
+       height: 5rem;
+       padding: 1rem;
+       font-size: 1.5rem;
+       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+       background-image: linear-gradient(to right bottom, rgba(27, 105, 157, 0.754), rgb(100, 97, 165),
+                     rgb(112, 93, 161),
+                     rgb(40, 80, 145));
+       grid-column: 1/8;
+       text-align: center;
+       justify-self: center;
+       align-self: start;
+       margin-top: 1.5rem;
+       border-radius: 1rem;
+       font-size: 2.5rem;
+
+
+}
+
+.backbtn {
+       background-image: linear-gradient(to right bottom, rgba(225, 47, 47, 0.838), rgb(196, 71, 71),
+                     rgba(187, 101, 55, 0.785),
+                     rgba(224, 130, 130, 0.893));
+       width: 5rem;
+       height: 4rem;
+       font-size: 5rem;
+
+       grid-row: 7;
+       grid-column: 7;
+       border-radius: 1rem;
+       outline: none;
+       border: none;
+       align-self: end;
+       justify-self: center;
+       margin-right: 2rem;
+       margin-bottom: 2rem;
+       font-size: 3rem;
+       font-weight: 500;
+       font-family: 'Times New Roman', Times, serif;
+       transition: all 0.2s;
+}
+
+.backbtn:active {
+       transform: scale(0.96);
+}
+
+.backbtn .svg {
+       width: 3.5rem;
+}
+
+.showBox {
+       display: grid;
+       grid-template-columns: repeat(7, 1fr);
+       grid-template-rows: repeat(7, 1fr);
+       align-items: center;
+       grid-column: 2/3;
+       grid-row: 2/3;
+       background-color: rgba(114, 223, 203, 0.119);
+       width: 60rem;
+       height: 45rem;
+       border-radius: 1rem;
+       z-index: 10;
+
+
+}
+
+.deleteBox h3 {
+
+       width: 25rem;
+       height: 5rem;
+       padding: 1rem;
+       font-size: 1.5rem;
+       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+       background-image: linear-gradient(to right bottom, rgba(27, 105, 157, 0.754), rgb(100, 97, 165),
+                     rgb(112, 93, 161),
+                     rgb(40, 80, 145));
+       grid-column: 1/8;
+       text-align: center;
+       justify-self: center;
+       align-self: start;
+       margin-top: 1.5rem;
+       border-radius: 1rem;
+       font-size: 2.5rem;
+
+
+}
+
+.deletebtn {
+       background-image: linear-gradient(to right bottom, rgba(225, 47, 47, 0.838), rgb(196, 71, 71),
+                     rgba(187, 101, 55, 0.785),
+                     rgba(224, 130, 130, 0.893));
+       width: 5rem;
+       height: 4rem;
+       font-size: 5rem;
+
+       grid-row: 7;
+       grid-column: 7;
+       border-radius: 1rem;
+       outline: none;
+       border: none;
+       align-self: end;
+       justify-self: center;
+       margin: 2rem;
+       font-size: 3rem;
+       font-weight: 500;
+       font-family: 'Times New Roman', Times, serif;
+       transition: all 0.2s;
+}
+
+.deletebtn:active {
+       transform: scale(0.96);
+}
+
+.deletebtn .svg {
+       width: 3.5rem;
+}
+
+
+.btns2 {
+       grid-column: 4/5;
+       grid-row: 3/4;
+}
+
+.btns22 {
+       grid-column: 4/5;
+       grid-row: 5/6;
+
+}
+
+.inputDeleteBtn1 {
+       grid-row: 4/5;
+       grid-column: 1/4;
+       margin: 1rem;
+       align-self: end;
+       width: 20rem;
+       height: 3rem;
+       font-size: 2.5rem;
+       font-family: 'Times New Roman', Times, serif;
+
+}
+
+.inputDeleteBtn2 {
+       grid-row: 3/4;
+       grid-column: 1/4;
+       margin: 1rem;
+       align-self: end;
+       width: 20rem;
+       height: 3rem;
+       font-size: 2.5rem;
+       font-family: 'Times New Roman', Times, serif;
+}
+
+.showBox .txtInputDeleteBtn1 {
+       width: 30rem;
+       grid-column: 5/7;
+       grid-row: 3/4;
+       font-size: 2rem;
+       height: 4rem;
+       justify-self: end;
+
+}
+
+.showBox .txtInputDeleteBtn2 {
+       font-size: 2rem;
+       grid-column: 5/7;
+       width: 30rem;
+       height: 4rem;
+       grid-row: 4/5;
+       justify-self: end;
+
+
+}
+
+.showBox .DeleteBtn.Delete {
+       grid-row: 7/8;
+       grid-column: 4/5;
+       width: 30rem;
+       height: 4rem;
+
+}
+
+#inDB3 {
+       grid-row: 5/6;
+       grid-column: 1/4;
+       width: 20rem;
+       height: 3rem;
+       font-size: 2.5rem;
+       font-family: 'Times New Roman', Times, serif;
+
+}
+
+#txtinDB3 {
+       grid-row: 5/6;
+       grid-column: 2/7;
+       justify-self: end;
+       margin-top: 1rem;
 
 }
 span {
@@ -185,7 +392,7 @@ span {
               0 0 20px rgba(255, 255, 255, 1);
        animation: shooting 5s infinite linear;
        scroll-behavior: none;
-       
+
 
 }
 
@@ -289,223 +496,6 @@ span::before {
        background-image: linear-gradient(90deg, #fff, transparent);
 
 }
-.showBox
-{
-       display: grid;
-       grid-template-columns: repeat(7,1fr);
-       grid-template-rows: repeat(7,1fr);
-       align-items: center;
-       grid-column: 2/3;
-       grid-row: 2/3;
-       background-color: rgba(114, 223, 203, 0.119);
-       width: 60rem;
-       height: 45rem;
-       border-radius: 1rem;
-       z-index: 10;
-
-
-}
-.showBox .txt
-{
-       
-       width: 25rem;
-       height: 5rem;
-       padding: 1rem;
-   font-size: 1.5rem;
-   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-background-image: linear-gradient(to right bottom, rgba(27, 105, 157, 0.754), rgb(100, 97, 165),
-                     rgb(112, 93, 161),
-                     rgb(40, 80, 145));
-   grid-column: 1/8;
-  text-align: center;
-  justify-self: center;
-  align-self: start;
-  margin-top: 1.5rem;
-  border-radius: 1rem;
-  font-size: 2.5rem;
- 
-
-}
-.backbtn
-{
-       background-image: linear-gradient(to right bottom, rgba(225, 47, 47, 0.838), rgb(196, 71, 71),
-                            rgba(187, 101, 55, 0.785),
-                            rgba(224, 130, 130, 0.893));
-       width: 5rem;
-       height: 4rem;
-       font-size: 5rem;
-       
-       grid-row: 7;
-       grid-column: 7;
-       border-radius: 1rem;
-       outline: none;
-       border: none;
-       align-self: end;
-       justify-self: center;
-       margin-right: 2rem;
-       margin-bottom: 2rem;
-       font-size: 3rem;
-       font-weight: 500;
-       font-family: 'Times New Roman', Times, serif;
-        transition: all 0.2s;
-}
-.backbtn:active{
-       transform: scale(0.96);
-}
-.backbtn .svg
-{
-       width: 3.5rem;
-}
-.showBox {
-       display: grid;
-       grid-template-columns: repeat(7, 1fr);
-       grid-template-rows: repeat(7, 1fr);
-       align-items: center;
-       grid-column: 2/3;
-       grid-row: 2/3;
-       background-color: rgba(114, 223, 203, 0.119);
-       width: 60rem;
-       height: 45rem;
-       border-radius: 1rem;
-       z-index: 10;
-
-
-}
-
-.deleteBox h3 {
-
-       width: 25rem;
-       height: 5rem;
-       padding: 1rem;
-       font-size: 1.5rem;
-       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-       background-image: linear-gradient(to right bottom, rgba(27, 105, 157, 0.754), rgb(100, 97, 165),
-                     rgb(112, 93, 161),
-                     rgb(40, 80, 145));
-       grid-column: 1/8;
-       text-align: center;
-       justify-self: center;
-       align-self: start;
-       margin-top: 1.5rem;
-       border-radius: 1rem;
-       font-size: 2.5rem;
-
-
-}
-
-.deletebtn {
-       background-image: linear-gradient(to right bottom, rgba(225, 47, 47, 0.838), rgb(196, 71, 71),
-                     rgba(187, 101, 55, 0.785),
-                     rgba(224, 130, 130, 0.893));
-       width: 5rem;
-       height: 4rem;
-       font-size: 5rem;
-
-       grid-row: 7;
-       grid-column: 7;
-       border-radius: 1rem;
-       outline: none;
-       border: none;
-       align-self: end;
-       justify-self: center;
-       margin: 2rem;
-       font-size: 3rem;
-       font-weight: 500;
-       font-family: 'Times New Roman', Times, serif;
-       transition: all 0.2s;
-}
-
-.deletebtn:active {
-       transform: scale(0.96);
-}
-
-.deletebtn .svg {
-       width: 3.5rem;
-}
-
-
-.btns2
-{
-   grid-column: 4/5;
-   grid-row: 3/4;
-}
-.btns22
-{
-       grid-column: 4/5;
-        grid-row: 5/6;
-
-}
-.inputDeleteBtn1
-{
-       grid-row: 4/5;
-       grid-column: 1/4;
-       margin:  1rem;
-       align-self: end;
-       width: 20rem;
-              height: 3rem;
-              font-size: 2.5rem;
-              font-family: 'Times New Roman', Times, serif;
-
-}
-.inputDeleteBtn2
-{
-     grid-row: 3/4;
-       grid-column: 1/4;
-       margin: 1rem;
-      align-self: end;
-       width: 20rem;
-              height: 3rem;
-              font-size: 2.5rem;
-              font-family: 'Times New Roman', Times, serif;
-}
-.showBox .txtInputDeleteBtn1
- {
-       width: 30rem;
-       grid-column: 5/7;
-       grid-row: 3/4;
-       font-size: 2rem;
-       height: 4rem;
-       justify-self: end;
-
-}
-
-.showBox .txtInputDeleteBtn2
-{
-       font-size: 2rem;
-       grid-column: 5/7;
-       width: 30rem;
-       height: 4rem;
-              grid-row: 4/5;
-              justify-self: end;
-             
-            
-}
-.showBox .DeleteBtn.Delete
-{
-       grid-row: 7/8;
-       grid-column: 4/5;
-       width: 30rem;
-   height: 4rem;
-  
-}
-#inDB3
-{
-  grid-row: 5/6;
-  grid-column: 1/4;
-     width: 20rem;
-     height: 3rem;
-     font-size: 2.5rem;
-     font-family: 'Times New Roman', Times, serif;
-
-}
-#txtinDB3
-{
-       grid-row: 5/6;
-       grid-column: 2/7;
-       justify-self: end;
-       margin-top:  1rem;
-
-}
 
 @keyframes shooting {
 
@@ -532,6 +522,3 @@ background-image: linear-gradient(to right bottom, rgba(27, 105, 157, 0.754), rg
 
        }
 }
-
-
-
